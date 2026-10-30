@@ -1,0 +1,6 @@
+INFO server started
+ERROR database timeout
+INFO retry requested
+WARN slow response
+ERROR database timeout
+ERROR missing token

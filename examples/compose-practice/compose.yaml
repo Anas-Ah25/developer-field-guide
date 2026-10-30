@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: learner
+      POSTGRES_PASSWORD: local-learning-only
+      POSTGRES_DB: handbook
+    volumes:
+      - handbook-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U learner -d handbook"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  adminer:
+    image: adminer:5
+    ports:
+      - "127.0.0.1:8083:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  handbook-data:

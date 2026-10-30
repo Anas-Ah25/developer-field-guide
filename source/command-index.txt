@@ -1,0 +1,171 @@
+deactivate|deactivate|Leave an activated Python virtual environment.|network|Does not delete .venv
+make|make TARGET|Run a named Makefile target.|network|Read target; arbitrary commands may run
+npm ci|npm ci|Install JavaScript dependencies using a compatible lockfile.|network|Replaces node_modules; can run scripts
+npm run|npm run|List configured npm scripts.|network|npm run NAME executes that script
+python -m pip|python -m pip --version|Inspect pip belonging to the selected Python.|network|Use the intended environment
+python3 -m venv|python3 -m venv .venv|Create a project-local Python environment.|network|Writes .venv; activation is separate
+tee|COMMAND \| tee OUTPUT.log|Display output and write it to a file.|shell|Overwrites OUTPUT.log; -a appends
+vim|vim FILE|Edit using Vim modal key bindings.|scripts|Read editor exit instructions first
+alias|alias ll='ls -lah'|Create an interactive shortcut.|shell|Session configuration
+awk|awk '{print $1}' FILE|Extract or compute fields in text.|text|macOS + Linux
+basename|basename /a/b/file.txt|Print the last path component.|paths|macOS + Linux
+bash|bash SCRIPT.sh|Run a script with Bash.|scripts|macOS Bash is older
+bg|bg|Resume a suspended current-shell job in background.|processes|Shell built-in
+brew info|brew info PACKAGE|Inspect a package before installing.|network|Homebrew required
+brew install|brew install PACKAGE|Install a development tool.|network|Changes installed tools
+brew outdated|brew outdated|List available package upgrades.|network|Homebrew required
+brew update|brew update|Refresh package metadata.|network|Network + metadata changes
+brew upgrade|brew upgrade PACKAGE|Upgrade a selected installed package.|network|May change behavior
+cat|cat FILE|Print a small file.|text|macOS + Linux
+cd|cd DIRECTORY|Change the current shell's working directory.|paths|Shell built-in
+chmod|chmod u+x SCRIPT.sh|Add owner execute permission.|permissions|Changes permissions
+chown|chown USER FILE|Change ownership where permitted.|permissions|May require admin authority
+command -v|command -v TOOL|Inspect command resolution.|shell|Shell built-in
+cp|cp -i SOURCE DESTINATION|Copy a file; prompt on overwrite.|files|Writes files
+cp -R|cp -R SOURCE_DIR DESTINATION|Copy a directory tree.|files|Check destination nesting
+curl|curl -I URL|Inspect HTTP response headers.|network|Sends a network request
+curl -fL|curl -fL -o FILE URL|Download to a named file and follow redirects.|network|May overwrite FILE
+cut|cut -d ',' -f 1 FILE|Select simple delimited fields.|text|Not a full CSV parser
+date|date +%F|Print today's date as YYYY-MM-DD.|shell|Local timezone by default
+df|df -h .|Inspect filesystem capacity.|files|macOS + Linux
+diff|diff -u FIRST SECOND|Compare two files.|files|Exit 1 can mean differences
+dig|dig example.com|Inspect DNS answers.|network|Availability varies
+dirname|dirname /a/b/file.txt|Print the directory component.|paths|macOS + Linux
+docker build|docker build -t IMAGE:TAG .|Build an image from the current context.|docker-build|Build may run instructions
+docker compose config|docker compose config --quiet|Validate the Compose model without printing it.|compose|Docker Compose required
+docker compose down|docker compose down|Remove project containers and usual networks.|compose|Discards container writable layers
+docker compose down -v|docker compose down -v|Also remove owned volumes.|compose|DELETES stored volume data
+docker compose exec|docker compose exec SERVICE COMMAND|Run a command in a running service container.|compose|COMMAND may change data
+docker compose logs|docker compose logs -f SERVICE|Follow a service's logs.|compose|Control-C stops following
+docker compose ps|docker compose ps|Show this project's service state.|compose|Run in correct project folder
+docker compose restart|docker compose restart SERVICE|Restart existing containers.|compose|Does not apply all config changes
+docker compose stop|docker compose stop|Stop project containers without removing them.|compose|Stops services
+docker compose up|docker compose up -d|Create/reconcile and start project services.|compose|Creates runtime resources
+docker compose up --build|docker compose up -d --build|Build services as needed and reconcile containers.|compose|Can replace containers
+docker context ls|docker context ls|Inspect available Docker engine contexts.|docker-model|Check active endpoint
+docker exec|docker exec -it CONTAINER sh|Open a shell in a running container.|docker-commands|Shell availability varies
+docker image ls|docker image ls|List cached images.|docker-commands|Docker required
+docker image rm|docker image rm IMAGE|Remove an image reference when allowed.|docker-commands|Removes cached resource
+docker info|docker info|Inspect Docker engine information.|docker-model|May reveal environment details
+docker inspect|docker inspect CONTAINER|Inspect container metadata.|docker-commands|May display secrets
+docker logs|docker logs --tail 50 CONTAINER|Read recent container logs.|docker-commands|May display sensitive data
+docker network ls|docker network ls|List Docker networks.|docker-commands|Docker required
+docker port|docker port CONTAINER|Show published port mappings.|docker-commands|Docker required
+docker ps|docker ps -a|List running and exited containers.|docker-commands|Docker required
+docker pull|docker pull IMAGE:TAG|Download an image from a registry.|docker-model|Network + disk use
+docker rm|docker rm CONTAINER|Remove a stopped container.|docker-commands|Deletes its writable layer
+docker run|docker run --rm IMAGE|Create and start a container.|docker-commands|Trust the image first
+docker start|docker start CONTAINER|Start an existing stopped container.|docker-commands|Reuses old configuration
+docker stats|docker stats --no-stream|Inspect resource usage.|docker-commands|Docker required
+docker stop|docker stop CONTAINER|Ask a container to stop.|docker-commands|Stops its service
+docker system df|docker system df|Inspect Docker disk use.|docker-commands|Inspect before cleanup
+docker version|docker version|Show Docker client/server versions.|docker-model|Server may be unavailable
+docker volume ls|docker volume ls|List managed volumes.|docker-build|Not a backup inventory
+du|du -sh DIRECTORY|Estimate a directory's disk usage.|files|macOS + Linux
+echo|echo TEXT|Print simple text.|shell|Use printf for predictable formatting
+exit|exit|Leave a shell or script.|network|Remote SSH exit returns to host
+export|export NAME=value|Pass a variable to future child processes.|shell|Do not expose secrets
+fg|fg|Bring a current-shell job to the foreground.|processes|Shell built-in
+file|file PATH|Inspect a file's type.|files|Does not trust extensions
+find|find . -type f -name '*.py'|Find paths recursively.|paths|Quote the pattern
+git add|git add FILE|Stage the current contents of a path.|git-daily|Changes the index
+git add -p|git add -p FILE|Select hunks for staging.|git-daily|Interactive
+git bisect|git bisect start|Begin a regression search.|git-inspect|Read complete procedure first
+git blame|git blame -L 10,30 -- FILE|Find commits responsible for lines.|git-inspect|Read context, not just authors
+git branch|git branch -vv|Inspect local branches and tracking state.|git-branches|Read-only form
+git branch -d|git branch -d BRANCH|Delete a local branch with safeguards.|git-branches|Removes a reference
+git check-ignore|git check-ignore -v PATH|Identify matching ignore rules.|git-conflicts|Tracked files behave differently
+git cherry-pick|git cherry-pick -x COMMIT_ID|Apply a selected commit's change.|git-cherry|Creates a new commit normally
+git clean|git clean -nd|Preview removal of untracked files/directories.|git-undo|Preview only; -fd performs deletion
+git clone|git clone URL NEW_DIRECTORY|Create a local copy of a repository.|git-daily|Network unless local source
+git commit|git commit -m "Message"|Create a commit from the index.|git-daily|Local history change
+git commit --amend|git commit --amend|Replace the latest commit.|git-rebase|Rewrites commit ID
+git config|git config --show-origin --get user.email|Inspect a specific Git setting.|git-daily|Read-only form
+git diff|git diff|Compare tracked working files with the index.|git-inspect|Untracked contents excluded
+git diff --staged|git diff --staged|Review the proposed commit versus HEAD.|git-daily|Read-only
+git fetch|git fetch origin|Download history and refresh tracking refs.|git-remotes|Normally no source-file edits
+git init|git init -b main|Initialize a new repository.|git-daily|Use in intended new directory
+git log|git log --graph --decorate --oneline --all|Inspect commit ancestry and references.|git-inspect|Read-only
+git merge|git merge BRANCH|Integrate another branch into the current one.|git-branches|Can conflict or commit
+git merge --abort|git merge --abort|Abandon an in-progress merge.|git-conflicts|Clean starting tree is best
+git mv|git mv OLD NEW|Move a tracked file and stage the rename.|git-daily|Writes working tree + index
+git pull|git pull --ff-only|Fetch and accept only fast-forward integration.|git-remotes|Requires appropriate upstream
+git push|git push -u origin BRANCH|Publish a branch and establish upstream.|git-remotes|CHANGES remote state
+git push --force-with-lease|git push --force-with-lease|Rewrite a remote reference with a lease check.|git-rebase|Read explicit-lease procedure first
+git rebase|git rebase origin/main|Replay current branch changes on a new base.|git-rebase|Rewrites local commits
+git rebase -i|git rebase -i HEAD~3|Edit a private commit series.|git-rebase|Rewrites history
+git reflog|git reflog|Inspect local reference movements.|git-recovery|Temporary local recovery record
+git remote|git remote -v|Inspect configured remote URLs.|git-remotes|Check destination before push
+git reset --soft|git reset --soft HEAD~1|Move back one commit, retaining index/files.|git-undo|Private history only without coordination
+git reset --mixed|git reset --mixed HEAD~1|Move back, reset index, retain working files.|git-undo|Rewrites branch tip
+git reset --hard|git reset --hard COMMIT_ID|Reset tip, index, and tracked working content.|git-undo|DESTRUCTIVE: save local work first
+git restore|git restore -- FILE|Replace unstaged edits from the index.|git-undo|OVERWRITES tracked local edits
+git restore --staged|git restore --staged FILE|Unstage while preserving working edits.|git-undo|Changes index only
+git revert|git revert COMMIT_ID|Create an inverse change commit.|git-undo|Can conflict
+git rm|git rm FILE|Delete a tracked file and stage removal.|git-daily|DELETES working file
+git rm --cached|git rm --cached FILE|Stop tracking while keeping a local copy.|git-conflicts|History still contains old versions
+git show|git show COMMIT_ID|Inspect a commit and its change.|git-inspect|Read-only
+git stash|git stash push -u -m "Reason"|Temporarily save tracked and untracked work.|git-recovery|Ignored files excluded
+git stash apply|git stash apply 'stash@{0}'|Restore a stash while keeping its entry.|git-recovery|Can conflict
+git status|git status --short|Inspect index and working-tree state.|git-model|Read-only
+git switch|git switch BRANCH|Switch to an existing branch.|git-branches|Updates working files
+git switch -c|git switch -c NEW_BRANCH|Create and switch to a branch.|git-branches|Uses current commit as base
+git tag|git tag -a VERSION -m "Message"|Create an annotated local tag at HEAD.|git-flows|Publishing is separate
+git worktree|git worktree add -b NEW_BRANCH NEW_PATH BASE|Create an additional checkout.|git-recovery|Shares Git metadata
+grep|grep -n -F 'text' FILE|Find literal matching lines.|text|Exit 1 means no match
+head|head -n 20 FILE|Read the first lines.|text|macOS + Linux
+history|history|Inspect recent shell commands.|terminal|May contain sensitive commands
+hostname|hostname|Identify the current machine.|network|Useful after SSH login
+jobs|jobs|Inspect jobs belonging to this shell.|processes|Not all system processes
+jq|jq '.field' FILE.json|Query structured JSON.|text|Optional installation
+kill|kill -TERM PID|Request a verified process to terminate.|processes|Stops a process
+less|less FILE|Read a file with paging and search.|text|q exits
+ln -s|ln -s TARGET LINK_NAME|Create a symbolic link, not a copy.|paths|Check target and link paths
+ls|ls -lah|List files, hidden names, and metadata.|paths|macOS + Linux
+lsof|lsof -nP -iTCP:8000 -sTCP:LISTEN|Identify a listening process.|processes|Mac-friendly port check
+man|man COMMAND|Read installed command documentation.|terminal|q exits
+mkdir|mkdir -p DIRECTORY|Create a directory and missing parents.|files|Writes directories
+mktemp|mktemp -d /tmp/practice.XXXXXX|Create a unique temporary directory.|files|Temporary, not permanent storage
+mv|mv -i SOURCE DESTINATION|Move or rename with overwrite prompt.|files|Writes/removes paths
+nano|nano FILE|Edit a text file in a terminal editor.|scripts|Saving overwrites the file
+open|open .|Open the current directory in Finder.|paths|macOS-specific
+pbcopy|printf '%s' 'text' \| pbcopy|Copy standard input to the Mac clipboard.|terminal|macOS-specific
+pbpaste|pbpaste|Print clipboard contents.|terminal|macOS; clipboard may be sensitive
+pgrep|pgrep -fl PATTERN|Find processes by command pattern.|processes|Inspect before kill
+ping|ping HOST|Test ICMP reachability.|network|Does not prove HTTP works
+printenv|printenv VARIABLE|Read one environment variable.|shell|Avoid dumping secrets
+printf|printf '%s\n' "TEXT"|Print formatted text predictably.|shell|Shell built-in or executable
+ps|ps aux|Inspect processes.|processes|Snapshot, not continuous view
+pwd|pwd|Print current working directory.|paths|Shell built-in commonly
+python3 -m http.server|python3 -m http.server 8000 --bind 127.0.0.1|Serve a controlled folder locally.|processes|Python required; dev use only
+rg|rg -n 'pattern' src|Search source files quickly.|text|Optional ripgrep installation
+rm|rm -i FILE|Delete a file with confirmation.|files|PERMANENT outside Trash
+rmdir|rmdir DIRECTORY|Remove an empty directory.|files|Fails if not empty
+rsync|rsync -avn SOURCE/ DESTINATION/|Preview an archive-style sync.|network|Trailing slash matters
+scp|scp FILE USER@HOST:/directory/|Copy a file over SSH.|network|Can overwrite destination
+sed|sed 's/old/new/g' FILE|Print transformed text without editing input.|text|In-place syntax differs by OS
+sleep|sleep 2|Wait for a number of seconds.|processes|Useful in tiny scripts
+sort|sort -nr FILE|Sort numeric values descending.|text|Input format matters
+source|source TRUSTED_FILE|Execute a trusted file in the current shell.|scripts|Can change this shell
+ssh|ssh USER@HOST|Open an encrypted remote session.|network|Verify host identity
+ssh-keygen|ssh-keygen -t ed25519|Create an SSH key pair.|network|Do not overwrite an existing key
+sudo|sudo COMMAND|Run an authorized privileged command.|permissions|Elevated consequences
+sw_vers|sw_vers|Inspect macOS version.|terminal|macOS-specific
+tail|tail -f FILE|Read and follow appended lines.|text|Control-C stops following
+tar|tar -tzf ARCHIVE.tar.gz|List an archive before extracting.|files|Listing is read-only
+test|test -f PATH|Test if a path is a regular file.|scripts|Status is the result
+time|time COMMAND|Measure a command's elapsed execution.|processes|COMMAND still executes
+top|top|View live process/resource activity.|processes|q exits
+touch|touch FILE|Create if missing; otherwise update timestamps.|files|Does not erase existing contents
+tr|tr ':' '\n'|Translate characters in input.|shell|Often used in a pipe
+tree|tree -L 2|Show a directory tree to limited depth.|structure|Optional installation
+type|type -a COMMAND|Inspect aliases, functions, and executables.|shell|Shell built-in
+uname|uname -m|Inspect machine architecture.|terminal|arm64 versus x86_64 matters
+uniq|uniq -c|Count adjacent duplicate lines.|text|Sort first when appropriate
+unset|unset NAME|Remove a shell variable.|shell|Affects this shell's future children
+unzip|unzip -l ARCHIVE.zip|List ZIP contents before extraction.|files|Listing is read-only
+wc|wc -l FILE|Count newline characters.|text|Usually a useful line count
+whoami|whoami|Print your current account name.|terminal|Useful after sudo or SSH
+xargs|find . -type f -print0 \| xargs -0 COMMAND|Pass null-delimited paths to another command.|scripts|COMMAND may modify files
+xcode-select|xcode-select -p|Inspect Apple's active developer tools path.|network|macOS-specific
+zip|zip -r ARCHIVE.zip DIRECTORY|Create a ZIP archive.|files|Writes archive file
